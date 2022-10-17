@@ -1,0 +1,24 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.4'
+    id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+    id 'java'
+}
+
+group = 'jpa-basic'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.hibernate:hibernate-entitymanager'
+    runtimeOnly 'com.h2database:h2'
+
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
