@@ -16,10 +16,12 @@ public class JpaMain {
         try {
 
             //영속
-            Member member = new Member(200L, "member200");
+            Member member = em.find(Member.class, 150L);
             member.setName("AAAAA");
 
-            em.detach(member); //준영속 상태
+            em.clear();
+
+            Member member2 = em.find(Member.class, 150L);
 
             System.out.println("===========");
             tx.commit();
