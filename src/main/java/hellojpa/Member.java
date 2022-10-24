@@ -6,12 +6,15 @@ import javax.persistence.*;
 public class Member {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
+    @Column(name = "member_id")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "username")
     private String username;
 
+    @Column(name = "team_id")
+    private Long teamId;
 
     protected Member() {
     }
@@ -26,6 +29,14 @@ public class Member {
 
     public String getUsername() {
         return username;
+    }
+
+    public Long getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(Long teamId) {
+        this.teamId = teamId;
     }
 
     public void setUsername(String username) {
