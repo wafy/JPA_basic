@@ -17,8 +17,9 @@ public class JpaMain {
 
             //영속
             Member member = new Member(200L, "member200");
-            em.persist(member);
-            em.flush(); //flush를 호출해도 1차캐쉬에 데이터는 존재한다.
+            member.setName("AAAAA");
+
+            em.detach(member); //준영속 상태
 
             System.out.println("===========");
             tx.commit();
