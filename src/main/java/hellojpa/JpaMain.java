@@ -16,10 +16,11 @@ public class JpaMain {
         try {
 
             //영속
-            Member findMember = em.find(Member.class, 150L);
-            findMember.setName("ZZZZZ");
-            System.out.println("===========");
+            Member member = new Member(200L, "member200");
+            em.persist(member);
+            em.flush(); //flush를 호출해도 1차캐쉬에 데이터는 존재한다.
 
+            System.out.println("===========");
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
