@@ -11,8 +11,5 @@ public class Product {
     @GeneratedValue
     private Long productId;
 
-    @OneToMany(mappedBy = "products")
-    private List<MemberProduct> memberProducts = new ArrayList<>();
-
 
 }

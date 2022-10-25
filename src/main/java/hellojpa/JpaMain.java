@@ -4,7 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.List;
 
 public class JpaMain {
 
@@ -15,28 +14,25 @@ public class JpaMain {
         tx.begin();
 
         try {
-            //저장
-            Team team = new Team();
-            team.setName("TeamA");
-            em.persist(team);
 
-            Member member = new Member();
-            member.setUsername("member1");
-            em.persist(member);
+            Movie movie = new Movie();
+            movie.setDirector("A");
+            movie.setActor("BBB");
+            movie.setName("바람과 함께 사라지다");
+            movie.setPrice(10000);
+            em.persist(movie);
 
-            team.addMember(member);
+            Album album = new Album();
+            album.setName("마마무");
+            album.setPrice(10000);
 
-            //select 쿼리 확인을 위해
-//            em.flush();
-//            em.clear();
+            em.persist(album);
 
-            Team findTeam = em.find(Team.class, team.getId());
-            List<Member> members = findTeam.getMembers();
-            System.out.println("========");
-            for (Member m : members) {
-                System.out.println("m.getUsername() = " + m.getUsername());
-            }
-            System.out.println("========");
+            em.flush();
+            em.clear();
+
+            Movie findMovie = em.find(Movie.class, movie.getId());
+            System.out.println("findMovie = " + findMovie);
 
             tx.commit();
         } catch (Exception e) {
