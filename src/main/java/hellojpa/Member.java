@@ -22,9 +22,6 @@ public class Member extends BaseEntity{
     @JoinColumn(name = "team_id")
     private Team team;
 
-    @OneToOne
-    @JoinColumn(name = "lock_id")
-    private Locker locker;
 
     @OneToMany(mappedBy = "member")
     private List<MemberProduct> memberProducts = new ArrayList<>();
@@ -55,4 +52,6 @@ public class Member extends BaseEntity{
     public void setUsername(String username) {
         this.username = username;
     }
+
+
 }
