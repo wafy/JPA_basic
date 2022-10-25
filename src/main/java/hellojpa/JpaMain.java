@@ -16,37 +16,24 @@ public class JpaMain {
 
         try {
 
-//            Member member = em.find(Member.class, 1L);
-//            printMember(member);
-            // printMemberAndTeam(member);
+            Team team = new Team();
+            team.setName("teamA");
+            em.persist(team);
 
             Member member1 = new Member();
             member1.setUsername("hello1");
+            member1.setTeam(team);
             em.persist(member1);
 
-
-            Member member2 = new Member();
-            member2.setUsername("hello2");
-            em.persist(member2);
             em.flush();
             em.clear();
 
-            Member m1 = em.find(Member.class, member1.getId());
-            System.out.println("m1.getClass() = " + m1.getClass());
+            Member m = em.find(Member.class, member1.getId());
+            System.out.println("m.getClass() = " + m.getTeam().getClass());
 
-            Member reference = em.getReference(Member.class, member1.getId());
-            System.out.println("reference.getClass() = " + reference.getClass());
-
-            System.out.println("(m1 == reference) = " + (m1 == reference));
-
-//            Member findMember = em.find(Member.class, member1.getId());
-            Member findMember = em.getReference(Member.class, member1.getId());
-            System.out.println("----------------------------------");
-            System.out.println("before findMember = " + findMember.getClass());
-//            System.out.println("findMember.getId() = " + findMember.getId());
-            System.out.println("findMember.getUsername() = " + findMember.getUsername());
-            System.out.println("findMember.getUsername() = " + findMember.getUsername());
-            System.out.println("after findMember = " + findMember.getClass());
+            System.out.println("===============");
+            m.getTeam().getName();
+            System.out.println("===============");
 
 
             tx.commit();
