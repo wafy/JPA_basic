@@ -20,6 +20,10 @@ public class Member {
     @JoinColumn(name = "team_id")
     private Team team;
 
+    @OneToOne
+    @JoinColumn(name = "lock_id")
+    private Locker locker;
+
     protected Member() {
     }
 
