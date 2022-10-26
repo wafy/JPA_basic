@@ -24,11 +24,6 @@ public class Team extends BaseEntity{
     private List<Member> members = new ArrayList<>();
 
 
-    public void addMember(Member member) {
-        member.setTeam(this);
-        members.add(member);
-    }
-
     protected Team() {
     }
 
